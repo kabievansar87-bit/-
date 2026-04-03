@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конспекты по физике — 9 и 10 класс (НИШ)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f5f5f3;
+    --bg3: #ebebea;
+    --text: #1a1a19;
+    --text2: #5f5e5a;
+    --text3: #888780;
+    --border: rgba(0,0,0,0.12);
+    --border2: rgba(0,0,0,0.22);
+    --blue: #378ADD;
+    --blue-bg: #e6f1fb;
+    --blue-text: #0c447c;
+    --green: #1D9E75;
+    --green-bg: #e1f5ee;
+    --green-text: #085041;
+    --red: #D85A30;
+    --red-bg: #faece7;
+    --red-text: #711b13;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a;
+      --bg2: #252522;
+      --bg3: #2e2e2b;
+      --text: #f0ede8;
+      --text2: #b4b2a9;
+      --text3: #888780;
+      --border: rgba(255,255,255,0.1);
+      --border2: rgba(255,255,255,0.2);
+      --blue-bg: #042c53;
+      --blue-text: #b5d4f4;
+      --green-bg: #04342c;
+      --green-text: #9fe1cb;
+      --red-bg: #4a1b0c;
+      --red-text: #f0997b;
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg3);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+  }
+  .grade-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .grade-btn {
+    padding: 8px 22px;
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all .15s;
+  }
+  .grade-btn:hover { background: var(--bg2); }
+  .grade-btn.active {
+    background: var(--blue-bg);
+    color: var(--blue-text);
+    border-color: transparent;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin: 2rem 0 .75rem;
+  }
+  .topic-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .topic-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .1s;
+  }
+  .topic-header:hover { background: var(--bg2); }
+  .topic-num {
+    font-size: 11px;
+    color: var(--text3);
+    min-width: 42px;
+    font-family: monospace;
+  }
+  .topic-name {
+    font-size: 15px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .topic-arrow {
+    font-size: 11px;
+    color: var(--text3);
+    transition: transform .2s;
+  }
+  .topic-arrow.open { transform: rotate(180deg); }
+  .topic-body {
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+  .topic-body.open { display: block; }
+
+  .formula-box {
+    background: var(--bg2);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+  }
+  .formula-box span {
+    display: block;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    color: var(--text2);
+    margin-top: 4px;
+  }
+  .formula-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .mini-formula {
+    background: var(--bg2);
+    border-radius: var(--radius-sm);
+    padding: 9px 11px;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    border: 1px solid var(--border);
+  }
+  .mini-formula span {
+    display: block;
+    font-family: -apple-system, sans-serif;
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+  .key-point {
+    font-size: 14px;
+    color: var(--text2);
+    margin: 7px 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--border2);
+    line-height: 1.5;
+  }
+  .example-block {
+    background: var(--blue-bg);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin: 12px 0;
+  }
+  .example-block h4 {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue-text);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .example-block p {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+  }
+  .graph-row {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+  .graph-wrap { flex: 1; min-width: 150px; }
+  .graph-title {
+    font-size: 12px;
+    color: var(--text2);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text3);
+    margin: 14px 0 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .table-wrap { overflow-x: auto; margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--bg2);
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text2);
+    border-bottom: 1px solid var(--border2);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  svg text { font-family: -apple-system, sans-serif; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Конспекты по физике — НИШ</h1>
+  <div class="subtitle">Все цели обучения · 9 и 10 класс · с формулами, графиками и примерами задач</div>
+
+  <div class="grade-tabs">
+    <button class="grade-btn active" onclick="showGrade(9,this)">9 класс</button>
+    <button class="grade-btn" onclick="showGrade(10,this)">10 класс</button>
+  </div>
+
+  <!-- ==================== 9 CLASS ==================== -->
+  <div id="g9">
+
+    <div class="section-title">Раздел 9.1А — Кинематика: прямолинейное движение</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.1.1</span>
+        <span class="topic-name">Векторы: сложение и разложение на составляющие</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">→C = →A + →B<span>Правило параллелограмма</span></div>
+          <div class="mini-formula">→C = →A − →B<span>Вычитание векторов</span></div>
+          <div class="mini-formula">Aₓ = A · cos θ<span>Проекция вектора на ось X</span></div>
+          <div class="mini-formula">Aᵧ = A · sin θ<span>Проекция вектора на ось Y</span></div>
+          <div class="mini-formula">|C| = √(A²+B²+2AB·cosα)<span>Модуль результирующей</span></div>
+          <div class="mini-formula">tan θ = Aᵧ / Aₓ<span>Направление вектора</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Правило параллелограмма</div>
+            <svg viewBox="0 0 200 150" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="a1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#378ADD"/></marker>
+                <marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1D9E75"/></marker>
+                <marker id="a3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D85A30"/></marker>
+              </defs>
+              <line x1="30" y1="120" x2="140" y2="120" stroke="#378ADD" stroke-width="2.5" marker-end="url(#a1)"/>
+              <text x="82" y="137" text-anchor="middle" font-size="13" fill="#378ADD">→A</text>
+              <line x1="30" y1="120" x2="70" y2="45" stroke="#1D9E75" stroke-width="2.5" marker-end="url(#a2)"/>
+              <text x="40" y="75" font-size="13" fill="#1D9E75">→B</text>
+              <line x1="140" y1="120" x2="180" y2="45" stroke="#1D9E75" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <line x1="70" y1="45" x2="180" y2="45" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <line x1="30" y1="120" x2="178" y2="46" stroke="#D85A30" stroke-width="3" marker-end="url(#a3)"/>
+              <text x="120" y="70" font-size="13" fill="#D85A30">→C (рез.)</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">Разложение вектора на составляющие</div>
+            <svg viewBox="0 0 200 150" width="100%" fill="none">
+              <defs>
+                <marker id="b1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D85A30"/></marker>
+                <marker id="b2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#378ADD"/></marker>
+                <marker id="b3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1D9E75"/></marker>
+              </defs>
+              <line x1="20" y1="130" x2="185" y2="130" stroke="#5f5e5a" stroke-width="1.2"/>
+              <line x1="20" y1="130" x2="20" y2="10" stroke="#5f5e5a" stroke-width="1.2"/>
+              <text x="188" y="133" font-size="11" fill="#888">x</text>
+              <text x="16" y="8" font-size="11" fill="#888">y</text>
+              <line x1="20" y1="130" x2="155" y2="40" stroke="#D85A30" stroke-width="3" marker-end="url(#b1)"/>
+              <text x="93" y="75" font-size="14" fill="#D85A30" font-weight="500">A</text>
+              <line x1="20" y1="130" x2="155" y2="130" stroke="#378ADD" stroke-width="2.5" marker-end="url(#b2)"/>
+              <text x="84" y="147" font-size="12" fill="#378ADD">Aₓ = A cosθ</text>
+              <line x1="155" y1="130" x2="155" y2="40" stroke="#1D9E75" stroke-width="2.5" marker-end="url(#b3)" stroke-dasharray="5,3"/>
+              <text x="158" y="90" font-size="12" fill="#1D9E75">Aᵧ = A sinθ</text>
+              <path d="M20,130 Q36,130 36,113" stroke="#888" stroke-width="1.2" fill="none"/>
+              <text x="40" y="125" font-size="11" fill="#888">θ</text>
+            </svg>
+          </div>
+        </div>
+        <div class="key-point">Перпендикулярные векторы: |C| = √(A² + B²) (теорема Пифагора)</div>
+        <div class="key-point">Параллельные сонаправленные: |C| = A + B; противоположные: |C| = |A − B|</div>
+        <div class="example-block"><h4>Пример</h4><p>Два вектора A = 3 Н и B = 4 Н перпендикулярны. Найти результирующую.<br>C = √(3² + 4²) = √(9+16) = √25 = <strong>5 Н</strong></p></div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.1</span>
+        <span class="topic-name">Кинематика: перемещение, скорость, ускорение. Уравнения РПД.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">v_ср = Δs / Δt<span>Средняя скорость (м/с)</span></div>
+          <div class="mini-formula">a = Δv / Δt<span>Ускорение (м/с²)</span></div>
+          <div class="mini-formula">v = v₀ + a·t<span>Скорость при РПД</span></div>
+          <div class="mini-formula">s = v₀t + at²/2<span>Перемещение при РПД</span></div>
+          <div class="mini-formula">v² = v₀² + 2as<span>Связь скорости и пути</span></div>
+          <div class="mini-formula">x = x₀ + v₀t + at²/2<span>Уравнение координаты</span></div>
+          <div class="mini-formula">h = gt²/2<span>Свободное падение</span></div>
+          <div class="mini-formula">v = g·t; t = √(2h/g)<span>Скорость и время падения</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">s(t) — равномерное движение</div>
+            <svg viewBox="0 0 170 130" width="100%">
+              <line x1="20" y1="110" x2="160" y2="110" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="110" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="163" y="113" font-size="10" fill="#888">t</text>
+              <text x="12" y="8" font-size="10" fill="#888">s</text>
+              <line x1="20" y1="110" x2="148" y2="22" stroke="#378ADD" stroke-width="2.5"/>
+              <text x="100" y="48" font-size="11" fill="#378ADD">tg α = v</text>
+              <path d="M20,110 Q38,110 38,90" stroke="#888" stroke-width="1" fill="none"/>
+              <text x="40" y="105" font-size="10" fill="#888">α</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">v(t) — РПД (ускорение)</div>
+            <svg viewBox="0 0 170 130" width="100%">
+              <line x1="20" y1="110" x2="160" y2="110" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="110" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="163" y="113" font-size="10" fill="#888">t</text>
+              <text x="12" y="8" font-size="10" fill="#888">v</text>
+              <line x1="20" y1="90" x2="150" y2="22" stroke="#1D9E75" stroke-width="2.5"/>
+              <rect x="20" y="22" width="130" height="88" fill="#1D9E75" fill-opacity="0.10"/>
+              <text x="65" y="88" font-size="10" fill="#1D9E75">площадь = s</text>
+              <text x="60" y="65" font-size="10" fill="#1D9E75">tg α = a</text>
+              <path d="M20,90 Q38,90 38,73" stroke="#888" stroke-width="1" fill="none"/>
+              <text x="38" y="88" font-size="10" fill="#888">α</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">h(t) — свободное падение</div>
+            <svg viewBox="0 0 170 130" width="100%">
+              <line x1="20" y1="110" x2="160" y2="110" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="110" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="163" y="113" font-size="10" fill="#888">t</text>
+              <text x="12" y="8" font-size="10" fill="#888">h</text>
+              <path d="M20,110 Q80,108 150,22" stroke="#D85A30" stroke-width="2.5" fill="none"/>
+              <text x="85" y="78" font-size="11" fill="#D85A30">h = gt²/2</text>
+              <text x="28" y="35" font-size="10" fill="#D85A30">g ≈ 9.8 м/с²</text>
+            </svg>
+          </div>
+        </div>
+        <div class="key-point">Принцип относительности Галилея: v⃗_абс = v⃗_отн + v⃗_пер (сложение скоростей при смене СО)</div>
+        <div class="key-point">Наклон графика s(t) = мгновенная скорость; наклон v(t) = ускорение; площадь под v(t) = перемещение</div>
+        <div class="example-block"><h4>Пример — свободное падение</h4><p>Тело падает с h = 80 м. Найти время падения и скорость в момент удара.<br>t = √(2·80/10) = √16 = <strong>4 с</strong> &nbsp;|&nbsp; v = g·t = 10·4 = <strong>40 м/с</strong></p></div>
+        <div class="example-block"><h4>Пример — РПД</h4><p>v₀ = 5 м/с, a = 2 м/с². Найти v и s через t = 3 с.<br>v = 5+2·3 = <strong>11 м/с</strong> &nbsp;|&nbsp; s = 5·3 + 2·9/2 = 15+9 = <strong>24 м</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.1Б — Вращательное движение</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.1</span>
+        <span class="topic-name">Равномерное движение по окружности. Центростремительное ускорение.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">ω = Δφ / Δt<span>Угловая скорость (рад/с)</span></div>
+          <div class="mini-formula">v = ω · r<span>Линейная скорость (м/с)</span></div>
+          <div class="mini-formula">T = 2π / ω = 1 / f<span>Период (с)</span></div>
+          <div class="mini-formula">ω = 2π · f = 2π / T<span>Угловая частота через период</span></div>
+          <div class="mini-formula">aц = v² / r = ω² · r<span>Центростремительное ускорение</span></div>
+          <div class="mini-formula">Fц = m · aц = mv²/r<span>Центростремительная сила</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Векторы при круговом движении</div>
+            <svg viewBox="0 0 200 170" width="100%" fill="none">
+              <defs>
+                <marker id="cv" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D85A30"/></marker>
+                <marker id="ca" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1D9E75"/></marker>
+              </defs>
+              <circle cx="100" cy="85" r="60" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <circle cx="100" cy="85" r="4" fill="#378ADD"/>
+              <text x="104" y="90" font-size="11" fill="#378ADD">O</text>
+              <line x1="100" y1="85" x2="158" y2="47" stroke="#888" stroke-width="1.5"/>
+              <text x="133" y="70" font-size="11" fill="#888">r</text>
+              <circle cx="158" cy="47" r="6" fill="#D85A30"/>
+              <line x1="158" y1="47" x2="183" y2="22" stroke="#D85A30" stroke-width="2.5" marker-end="url(#cv)"/>
+              <text x="176" y="18" font-size="12" fill="#D85A30">v ⊥ r</text>
+              <line x1="158" y1="47" x2="114" y2="69" stroke="#1D9E75" stroke-width="2.5" marker-end="url(#ca)"/>
+              <text x="118" y="44" font-size="11" fill="#1D9E75">aц → O</text>
+              <text x="50" y="158" font-size="11" fill="#888">v всегда ⊥ r; aц всегда → центру</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="table-wrap">
+              <table>
+                <tr><th>Величина</th><th>Формула</th><th>Ед.</th></tr>
+                <tr><td>Угл. скорость ω</td><td>2π/T = 2πf</td><td>рад/с</td></tr>
+                <tr><td>Лин. скорость v</td><td>ωr = 2πr/T</td><td>м/с</td></tr>
+                <tr><td>Период T</td><td>1/f</td><td>с</td></tr>
+                <tr><td>Частота f</td><td>1/T</td><td>Гц</td></tr>
+                <tr><td>Центр. ускор. aц</td><td>v²/r = ω²r</td><td>м/с²</td></tr>
+              </table>
+            </div>
+            <div class="example-block" style="margin-top:10px"><h4>Пример</h4><p>Колесо R=0.5 м, ω=4 рад/с.<br>v = 4·0.5 = <strong>2 м/с</strong><br>aц = 4²·0.5 = <strong>8 м/с²</strong></p></div>
+          </div>
+        </div>
+        <div class="key-point">Несмотря на постоянную скорость, тело движущееся по окружности имеет ускорение — центростремительное — т.к. меняется направление вектора v</div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.2А — Динамика: Законы Ньютона и деформация</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.2</span>
+        <span class="topic-name">Три закона Ньютона. Закон Гука. Вес и невесомость. Трение.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="section-label">Три закона Ньютона</div>
+        <div class="formula-box">ΣF⃗ = 0 ⟹ v = const (или v = 0)<span>I закон Ньютона (закон инерции): тело сохраняет состояние покоя или равномерного прямолинейного движения, если сумма всех сил = 0</span></div>
+        <div class="formula-box">F⃗_рез = m · a⃗<span>II закон Ньютона: ускорение тела прямо пропорционально результирующей силе и обратно пропорционально массе</span></div>
+        <div class="formula-box">F⃗₁₂ = −F⃗₂₁ (равны по модулю, противоположны по направлению)<span>III закон Ньютона: силы действия и противодействия приложены к РАЗНЫМ телам и никогда не уравновешивают друг друга</span></div>
+        <div class="section-label">Закон Гука и деформация</div>
+        <div class="formula-grid">
+          <div class="mini-formula">F = k · |Δx|<span>Закон Гука: F_упруг. (Н)</span></div>
+          <div class="mini-formula">k = F / Δx<span>Жёсткость пружины (Н/м)</span></div>
+          <div class="mini-formula">ε = Δl / l₀<span>Относительная деформация</span></div>
+          <div class="mini-formula">W = m(g ± a)<span>Вес при движении с ускорением</span></div>
+          <div class="mini-formula">W = 0<span>Невесомость (a = g, опора не давит)</span></div>
+          <div class="mini-formula">f = μ · N<span>Сила трения скольжения</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">F(Δx) — закон Гука</div>
+            <svg viewBox="0 0 170 130" width="100%">
+              <line x1="20" y1="110" x2="160" y2="110" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="110" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="163" y="113" font-size="10" fill="#888">Δx</text>
+              <text x="12" y="8" font-size="10" fill="#888">F</text>
+              <line x1="20" y1="110" x2="110" y2="22" stroke="#1D9E75" stroke-width="2.5"/>
+              <line x1="110" y1="22" x2="148" y2="32" stroke="#D85A30" stroke-width="2" stroke-dasharray="5,3"/>
+              <text x="112" y="18" font-size="10" fill="#D85A30">предел упруг.</text>
+              <text x="48" y="82" font-size="11" fill="#1D9E75">tg α = k</text>
+              <path d="M20,110 Q38,110 38,92" stroke="#888" stroke-width="1" fill="none"/>
+              <text x="40" y="107" font-size="10" fill="#888">α</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">Виды деформации</div>
+            <div class="table-wrap">
+              <table>
+                <tr><th>Вид</th><th>Описание</th></tr>
+                <tr><td>Растяжение</td><td>Удлинение вдоль оси</td></tr>
+                <tr><td>Сжатие</td><td>Укорочение вдоль оси</td></tr>
+                <tr><td>Сдвиг</td><td>Смещение слоёв</td></tr>
+                <tr><td>Изгиб</td><td>Сочетание растяжения/сжатия</td></tr>
+                <tr><td>Кручение</td><td>Вращательный сдвиг</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="key-point">Перегрузка (лифт вверх с a): W = m(g+a) — вес больше нормального</div>
+        <div class="key-point">Недогрузка (лифт вниз с a): W = m(g−a) — вес меньше нормального</div>
+        <div class="key-point">Трение покоя ≤ μₛN; трение скольжения = μₖN; μₛ > μₖ (покоя больше)</div>
+        <div class="example-block"><h4>Пример — перегрузка</h4><p>Лифт m=60 кг движется вверх с a=2 м/с².<br>W = 60·(10+2) = <strong>720 Н</strong> (перегрузка)<br>Движется вниз: W = 60·(10−2) = <strong>480 Н</strong> (недогрузка)</p></div>
+        <div class="example-block"><h4>Пример — закон Гука</h4><p>k=500 Н/м, Δx=0.04 м. F=k·Δx=500·0.04=<strong>20 Н</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.2Б — Статика: моменты сил</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.4</span>
+        <span class="topic-name">Момент силы. Условия равновесия тела. Пара сил.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">M = F · d<span>Момент силы (Н·м)</span></div>
+          <div class="mini-formula">ΣF⃗ = 0<span>Условие 1: сумма сил = 0</span></div>
+          <div class="mini-formula">ΣM = 0<span>Условие 2: сумма моментов = 0</span></div>
+          <div class="mini-formula">F₁d₁ = F₂d₂<span>Правило моментов (рычаг)</span></div>
+        </div>
+        <div class="key-point">d — плечо силы: кратчайшее расстояние (перпендикуляр) от оси вращения до линии действия силы</div>
+        <div class="key-point">Пара сил: два равных, противоположных, не лежащих на одной прямой вектора — создают вращающий момент, но не перемещают тело</div>
+        <div class="key-point">Момент по часовой стрелке = отрицательный; против = положительный (или условие по задаче)</div>
+        <div class="example-block"><h4>Пример — рычаг</h4><p>F₁=20 Н, d₁=0.3 м. Найти F₂ при d₂=0.6 м.<br>F₁·d₁ = F₂·d₂ → F₂ = 20·0.3/0.6 = <strong>10 Н</strong></p></div>
+        <div class="example-block"><h4>Пример — два условия равновесия</h4><p>Однородная балка длиной 4 м, масса 10 кг, опирается на две опоры. Груз 20 кг на расстоянии 1 м от левого края. Найти реакции опор.<br>ΣF=0: N₁+N₂=10·10+20·10=300 Н<br>ΣM(около N₁)=0: N₂·4 = 100·2+200·1 → N₂=100 Н; N₁=200 Н</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.3А — Законы сохранения</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.3</span>
+        <span class="topic-name">Импульс. ЗСИ. Работа и энергия. ЗСЭ.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="section-label">Импульс</div>
+        <div class="formula-grid">
+          <div class="mini-formula">p⃗ = m·v⃗<span>Импульс тела (кг·м/с)</span></div>
+          <div class="mini-formula">F⃗ = Δp⃗/Δt<span>Сила = скорость изм. импульса</span></div>
+          <div class="mini-formula">Σp⃗ = const<span>Закон сохранения импульса</span></div>
+          <div class="mini-formula">m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'<span>Упругий удар</span></div>
+          <div class="mini-formula">(m₁+m₂)V = m₁v₁ + m₂v₂<span>Абсолютно неупругий удар</span></div>
+        </div>
+        <div class="section-label">Работа и энергия</div>
+        <div class="formula-grid">
+          <div class="mini-formula">A = F·s·cos α<span>Механическая работа (Дж)</span></div>
+          <div class="mini-formula">Eₖ = mv²/2<span>Кинетическая энергия (Дж)</span></div>
+          <div class="mini-formula">Eₚ = mgh<span>Потенц. энергия тяжести</span></div>
+          <div class="mini-formula">Eₚ = kΔx²/2<span>Энергия деформированной пружины</span></div>
+          <div class="mini-formula">E_мех = Eₖ + Eₚ = const<span>ЗСЭ (без трения)</span></div>
+          <div class="mini-formula">A = ΔEₖ<span>Теорема о кинетич. энергии</span></div>
+        </div>
+        <div class="key-point">Работа силы упругости из графика F–Δx: A = площадь треугольника = kΔx²/2</div>
+        <div class="key-point">ЗСИ работает ТОЛЬКО в замкнутой системе (нет внешних сил)</div>
+        <div class="example-block"><h4>Пример — абсолютно неупругий удар</h4><p>m₁=2 кг, v₁=6 м/с; m₂=4 кг в покое. Скорость после удара?<br>(2+4)V = 2·6 → V = 12/6 = <strong>2 м/с</strong><br>ΔEₖ = ½·2·36 − ½·6·4 = 36−12 = <strong>24 Дж</strong> (потеряно на деформацию)</p></div>
+        <div class="example-block"><h4>Пример — ЗСЭ (свободное падение)</h4><p>Тело массой 2 кг падает с h=5 м (v₀=0).<br>mgh = mv²/2 → v = √(2gh) = √100 = <strong>10 м/с</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.3Б — Колебания</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.5</span>
+        <span class="topic-name">Гармонические колебания. Маятники. Резонанс.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">x = x_max · sin(ωt)<span>Уравнение смещения</span></div>
+          <div class="mini-formula">x = x_max · cos(ωt)<span>Альтернативное уравнение</span></div>
+          <div class="mini-formula">v = v_max · cos(ωt)<span>Уравнение скорости</span></div>
+          <div class="mini-formula">a = −a_max · sin(ωt)<span>Уравнение ускорения</span></div>
+          <div class="mini-formula">ω = 2π/T = 2πf<span>Угловая частота (рад/с)</span></div>
+          <div class="mini-formula">T = 1/f<span>Период и частота</span></div>
+          <div class="mini-formula">T_мат = 2π√(l/g)<span>Математический маятник</span></div>
+          <div class="mini-formula">T_пруж = 2π√(m/k)<span>Пружинный маятник</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Гармоническое колебание x(t)</div>
+            <svg viewBox="0 0 200 120" width="100%">
+              <line x1="15" y1="60" x2="195" y2="60" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="10" x2="20" y2="115" stroke="#888" stroke-width="1.2"/>
+              <text x="188" y="56" font-size="10" fill="#888">t</text>
+              <text x="8" y="8" font-size="10" fill="#888">x</text>
+              <path d="M20,60 C38,14 56,14 74,60 S110,106 128,60 S164,14 182,60" stroke="#378ADD" stroke-width="2.5" fill="none"/>
+              <line x1="20" y1="14" x2="74" y2="14" stroke="#D85A30" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="20" y1="14" x2="20" y2="60" stroke="#D85A30" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <text x="22" y="35" font-size="12" fill="#D85A30">A</text>
+              <line x1="20" y1="60" x2="128" y2="60" stroke="#1D9E75" stroke-width="1" stroke-dasharray="3,2"/>
+              <text x="72" y="56" font-size="10" fill="#1D9E75">← T →</text>
+              <text x="65" y="10" font-size="10" fill="#1D9E75">T/2</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">Резонанс: амплитуда vs частота</div>
+            <svg viewBox="0 0 200 120" width="100%">
+              <line x1="15" y1="100" x2="195" y2="100" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="100" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="188" y="103" font-size="10" fill="#888">f</text>
+              <text x="8" y="8" font-size="10" fill="#888">A</text>
+              <path d="M25,97 C50,95 70,88 95,22 S115,90 195,95" stroke="#D85A30" stroke-width="2.5" fill="none"/>
+              <line x1="95" y1="22" x2="95" y2="100" stroke="#D85A30" stroke-width="1.2" stroke-dasharray="3,2"/>
+              <text x="88" y="112" font-size="10" fill="#D85A30">f₀</text>
+              <text x="98" y="18" font-size="10" fill="#D85A30">резонанс</text>
+              <text x="40" y="55" font-size="10" fill="#888">f_выну = f₀</text>
+            </svg>
+          </div>
+        </div>
+        <div class="key-point">При гармонических колебаниях (без затухания): E_мех = Eₖ + Eₚ = const</div>
+        <div class="key-point">В точке равновесия: v_max, a=0; на краях: x_max, v=0, a_max</div>
+        <div class="key-point">Резонанс — резкое возрастание амплитуды вынужденных колебаний при совпадении частот (полезный: радио; вредный: мосты, здания)</div>
+        <div class="example-block"><h4>Пример — период маятника</h4><p>Математический маятник, l=1 м.<br>T = 2π·√(1/10) = 2π·0.316 ≈ <strong>2 с</strong></p></div>
+        <div class="example-block"><h4>Пример — пружинный маятник</h4><p>m=0.2 кг, k=50 Н/м.<br>T = 2π·√(0.2/50) = 2π·0.063 ≈ <strong>0.4 с</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 9.4А — Механические волны. Звук.</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.2.5</span>
+        <span class="topic-name">Волны: характеристики, поперечные/продольные, звук, ультразвук, эхо.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">v = λ · f = λ / T<span>Уравнение волны</span></div>
+          <div class="mini-formula">λ = v / f<span>Длина волны (м)</span></div>
+          <div class="mini-formula">s = v · t / 2<span>Дальность по эху</span></div>
+        </div>
+        <div class="table-wrap"><table>
+          <tr><th>Тип</th><th>Колебания частиц</th><th>Пример</th></tr>
+          <tr><td>Поперечная</td><td>⊥ направлению волны</td><td>Свет, поверхность воды, струна</td></tr>
+          <tr><td>Продольная</td><td>∥ направлению волны</td><td>Звук в воздухе, сжатие-разряжение</td></tr>
+        </table></div>
+        <div class="section-label">Характеристики звука</div>
+        <div class="key-point">Звук — продольная механическая волна; частота для человека: 20 Гц — 20 кГц</div>
+        <div class="key-point">Высота тона определяется частотой f; громкость — амплитудой A</div>
+        <div class="key-point">Скорости звука: в воздухе ≈ 340 м/с; в воде ≈ 1500 м/с; в стали ≈ 5000 м/с</div>
+        <div class="key-point">Ультразвук: f > 20 кГц — применяется в медицине (УЗИ, диагностика), дефектоскопии, сонаре</div>
+        <div class="key-point">Принцип суперпозиции: амплитуды волн складываются алгебраически в точке встречи</div>
+        <div class="key-point">Дифракция: огибание волнами препятствий; заметна при λ ≈ размеру препятствия</div>
+        <div class="example-block"><h4>Пример — длина волны звука</h4><p>f=440 Гц (нота «ля»), v=340 м/с.<br>λ = 340/440 ≈ <strong>0.77 м</strong></p></div>
+        <div class="example-block"><h4>Пример — эхолокация</h4><p>Эхо пришло через t=0.6 с, v_звука=340 м/с.<br>s = 340·0.6/2 = <strong>102 м</strong> до стены</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Разделы 9.4Б / 9.4В — ЭМ волны. Астрофизика.</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">9.4–9.7</span>
+        <span class="topic-name">Электромагнитные волны. Свет. Спутниковая связь. Астрофизика.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="table-wrap"><table>
+          <tr><th>Диапазон</th><th>λ</th><th>Применение</th></tr>
+          <tr><td>Радиоволны</td><td>&gt; 1 мм</td><td>Связь, ТВ, радиовещание</td></tr>
+          <tr><td>СВЧ (микроволны)</td><td>1 мм – 30 см</td><td>Радары, СВЧ-печи, Wi-Fi</td></tr>
+          <tr><td>Инфракрасное</td><td>700 нм – 1 мм</td><td>Тепло, пульты ДУ, ночное видение</td></tr>
+          <tr><td>Видимый свет</td><td>380 – 700 нм</td><td>Зрение (фиолетовый → красный)</td></tr>
+          <tr><td>Ультрафиолет</td><td>10 – 380 нм</td><td>Стерилизация, загар, витамин D</td></tr>
+          <tr><td>Рентгеновское</td><td>0.01 – 10 нм</td><td>Медицинская диагностика, досмотр</td></tr>
+          <tr><td>Гамма-излучение</td><td>&lt; 0.01 нм</td><td>Ядерная физика, стерилизация</td></tr>
+        </table></div>
+        <div class="key-point">Дисперсия: разложение белого света на цвета при прохождении через призму (v зависит от λ); красный преломляется меньше, фиолетовый — больше</div>
+        <div class="key-point">Рассеивание света: небо голубое, т.к. коротковолновый (синий) свет рассеивается сильнее</div>
+        <div class="key-point">Геостационарная орбита: h ≈ 36 000 км, T = 24 ч, спутник «висит» над одной точкой Земли</div>
+        <div class="key-point">Аналоговый сигнал — непрерывный; цифровой — дискретный (0/1). Цифровой: помехоустойчивее, передаёт больше данных</div>
+        <div class="section-label">Астрофизика</div>
+        <div class="formula-grid">
+          <div class="mini-formula">D = 1/p (пк)<span>Расстояние через параллакс; p — в угловых секундах</span></div>
+          <div class="mini-formula">1 пк = 3.26 св. лет<span>Парсек = расстояние при параллаксе 1"</span></div>
+          <div class="mini-formula">L ~ R²·T⁴<span>Светимость звезды</span></div>
+        </div>
+        <div class="key-point">Звёздный параллакс: при движении Земли по орбите ближняя звезда кажется смещающейся на фоне далёких — из этого угла p вычисляют D</div>
+        <div class="key-point">Звёздная величина m: чем меньше m, тем ярче звезда (Солнце: m ≈ −26.7; Луна: m ≈ −12.7)</div>
+        <div class="key-point">Светимость зависит от температуры (T⁴) и размера (R²) — более горячие и крупные звёзды светят ярче</div>
+      </div>
+    </div>
+
+  </div><!-- /g9 -->
+
+  <!-- ==================== 10 CLASS ==================== -->
+  <div id="g10" style="display:none">
+
+    <div class="section-title">Раздел 10.1А — Физические измерения</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.1.1</span>
+        <span class="topic-name">Единицы СИ. Производные единицы. Значащие цифры. Погрешности.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="table-wrap"><table>
+              <tr><th>Основная величина</th><th>Единица</th><th>Обозн.</th></tr>
+              <tr><td>Длина</td><td>метр</td><td>м</td></tr>
+              <tr><td>Масса</td><td>килограмм</td><td>кг</td></tr>
+              <tr><td>Время</td><td>секунда</td><td>с</td></tr>
+              <tr><td>Сила тока</td><td>ампер</td><td>А</td></tr>
+              <tr><td>Температура</td><td>кельвин</td><td>К</td></tr>
+              <tr><td>Кол-во вещества</td><td>моль</td><td>моль</td></tr>
+              <tr><td>Сила света</td><td>кандела</td><td>кд</td></tr>
+            </table></div>
+          </div>
+          <div class="graph-wrap">
+            <div class="table-wrap"><table>
+              <tr><th>Производная ед.</th><th>Через основные</th></tr>
+              <tr><td>Ньютон (Н)</td><td>кг·м/с²</td></tr>
+              <tr><td>Джоуль (Дж)</td><td>кг·м²/с²</td></tr>
+              <tr><td>Ватт (Вт)</td><td>Дж/с = кг·м²/с³</td></tr>
+              <tr><td>Кулон (Кл)</td><td>А·с</td></tr>
+              <tr><td>Вольт (В)</td><td>Дж/Кл = кг·м²/(А·с³)</td></tr>
+              <tr><td>Ом (Ом)</td><td>В/А = кг·м²/(А²·с³)</td></tr>
+              <tr><td>Паскаль (Па)</td><td>Н/м² = кг/(м·с²)</td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="section-label">Значащие цифры</div>
+        <div class="key-point">Все цифры начиная с первой ненулевой: 0.0052 → 2 знач.; 1.030 → 4 знач.; 1500 → 2 или 4 (зависит от контекста)</div>
+        <div class="key-point">При умножении/делении: результат содержит столько знач. цифр, сколько их в множителе с наименьшим их количеством</div>
+        <div class="formula-grid">
+          <div class="mini-formula">x̄ = (x₁+x₂+...+xₙ)/n<span>Среднее значение</span></div>
+          <div class="mini-formula">Δxᵢ = |xᵢ − x̄|<span>Абсолютная погрешность</span></div>
+          <div class="mini-formula">Δx̄ = Σ|xᵢ−x̄| / n<span>Средняя абсолютная погрешность</span></div>
+          <div class="mini-formula">δx = (Δx̄ / x̄) · 100%<span>Относительная погрешность (%)</span></div>
+        </div>
+        <div class="key-point">Запись результата: x = x̄ ± Δx̄ (единица); например: l = (5.32 ± 0.02) м</div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.1Б — Гравитационные поля</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.2.2</span>
+        <span class="topic-name">Закон всемирного тяготения. Напряжённость поля. Орбиты. Космические скорости. Байконур.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">F = G·m₁m₂ / r²<span>Закон всемирного тяготения</span></div>
+          <div class="mini-formula">G = 6.67·10⁻¹¹ Н·м²/кг²<span>Гравитационная постоянная</span></div>
+          <div class="mini-formula">g = GM / r²<span>Напряжённость поля (= g на поверхн.)</span></div>
+          <div class="mini-formula">F_тяж = mg<span>Сила тяжести</span></div>
+          <div class="mini-formula">v₁ = √(GM/R) ≈ 7.9 км/с<span>1-я косм. скорость (круговая орбита)</span></div>
+          <div class="mini-formula">T² / r³ = 4π²/(GM)<span>III закон Кеплера</span></div>
+          <div class="mini-formula">T_гео ≈ 24 ч, h ≈ 36000 км<span>Геостационарная орбита</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">g(r) — напряжённость поля</div>
+            <svg viewBox="0 0 190 130" width="100%">
+              <line x1="20" y1="112" x2="180" y2="112" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="112" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="183" y="115" font-size="10" fill="#888">r</text>
+              <text x="8" y="8" font-size="10" fill="#888">g</text>
+              <path d="M48,15 C58,18 75,35 95,60 S135,95 178,108" stroke="#D85A30" stroke-width="2.5" fill="none"/>
+              <line x1="48" y1="112" x2="48" y2="10" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+              <text x="40" y="122" font-size="10" fill="#888">R_з</text>
+              <text x="65" y="50" font-size="10" fill="#D85A30">g ~ 1/r²</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">Движение тела под углом к горизонту</div>
+            <svg viewBox="0 0 190 130" width="100%" fill="none">
+              <defs><marker id="pv" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D85A30"/></marker></defs>
+              <line x1="10" y1="112" x2="185" y2="112" stroke="#888" stroke-width="1.5"/>
+              <path d="M15,112 C45,28 115,18 180,112" stroke="#378ADD" stroke-width="2.5" fill="none"/>
+              <line x1="15" y1="112" x2="45" y2="65" stroke="#D85A30" stroke-width="2" marker-end="url(#pv)"/>
+              <text x="47" y="62" font-size="11" fill="#D85A30">v₀</text>
+              <text x="25" y="103" font-size="10" fill="#888">θ</text>
+              <path d="M15,112 Q24,112 24,103" stroke="#888" stroke-width="1" fill="none"/>
+              <text x="68" y="50" font-size="10" fill="#378ADD">парабола</text>
+              <text x="55" y="122" font-size="10" fill="#1D9E75">L = v₀²sin(2θ)/g; L_max при θ=45°</text>
+            </svg>
+          </div>
+        </div>
+        <div class="key-point">Горизонтальная составляющая: vₓ = v₀·cos θ = const (нет ускорения по горизонтали)</div>
+        <div class="key-point">Вертикальная составляющая: vᵧ = v₀·sin θ − g·t (свободное падение)</div>
+        <div class="key-point">Байконур (Казахстан) — первый и крупнейший космодром мира: запуск Спутника-1 (1957), полёт Гагарина (1961). Стратегическое и региональное значение.</div>
+        <div class="example-block"><h4>Пример — g на поверхности Земли</h4><p>M_з=6·10²⁴ кг, R_з=6.4·10⁶ м.<br>g = GM/R² = (6.67·10⁻¹¹·6·10²⁴)/(6.4·10⁶)² ≈ <strong>9.8 м/с²</strong></p></div>
+        <div class="example-block"><h4>Пример — 1-я космическая скорость</h4><p>v₁ = √(GM/R) = √(6.67·10⁻¹¹·6·10²⁴/6.4·10⁶) ≈ <strong>7.9 км/с</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.2А — Электрическое поле</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.4.1</span>
+        <span class="topic-name">Напряжённость, потенциал, суперпозиция, индукция, поляризация.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">E = F / q<span>Напряжённость эл. поля (В/м)</span></div>
+          <div class="mini-formula">E = kQ / r²<span>Поле точечного заряда; k=9·10⁹</span></div>
+          <div class="mini-formula">E = U / d<span>Однородное поле между пластинами</span></div>
+          <div class="mini-formula">F = qE<span>Сила на заряд в поле</span></div>
+          <div class="mini-formula">φ = kQ / r<span>Потенциал точечного заряда (В)</span></div>
+          <div class="mini-formula">E = −Δφ/Δx<span>Напряжённость = −градиент потенциала</span></div>
+          <div class="mini-formula">E⃗_рез = ΣE⃗ᵢ<span>Принцип суперпозиции</span></div>
+          <div class="mini-formula">U = φ₁ − φ₂<span>Разность потенциалов (напряжение)</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Аналогия: гравит. и эл. поля</div>
+            <div class="table-wrap"><table>
+              <tr><th>Гравит. поле</th><th>Эл. поле</th></tr>
+              <tr><td>F=Gm₁m₂/r²</td><td>F=kq₁q₂/r²</td></tr>
+              <tr><td>g=GM/r²</td><td>E=kQ/r²</td></tr>
+              <tr><td>F=mg</td><td>F=qE</td></tr>
+              <tr><td>E_p=mgh</td><td>E_p=qφ</td></tr>
+              <tr><td>φ=−GM/r</td><td>φ=kQ/r</td></tr>
+              <tr><td>Всегда притяж.</td><td>Может отталкивать</td></tr>
+            </table></div>
+          </div>
+          <div class="graph-wrap">
+            <div class="graph-title">Линии поля двух зарядов (+−)</div>
+            <svg viewBox="0 0 200 160" width="100%" fill="none">
+              <defs><marker id="el" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#D85A30"/></marker></defs>
+              <circle cx="65" cy="80" r="10" fill="#D85A30"/>
+              <text x="61" y="84" font-size="12" fill="white" font-weight="600">+</text>
+              <circle cx="135" cy="80" r="10" fill="#378ADD"/>
+              <text x="131" y="84" font-size="12" fill="white" font-weight="600">−</text>
+              <path d="M75,80 C88,60 112,60 125,80" stroke="#D85A30" stroke-width="1.5" fill="none" marker-end="url(#el)"/>
+              <path d="M75,80 C88,100 112,100 125,80" stroke="#D85A30" stroke-width="1.5" fill="none" marker-end="url(#el)"/>
+              <path d="M65,70 C65,45 135,45 135,70" stroke="#D85A30" stroke-width="1.5" fill="none" marker-end="url(#el)"/>
+              <path d="M65,90 C65,115 135,115 135,90" stroke="#D85A30" stroke-width="1.5" fill="none" marker-end="url(#el)"/>
+              <text x="100" y="148" text-anchor="middle" font-size="11" fill="#888">Линии от + к −</text>
+            </svg>
+          </div>
+        </div>
+        <div class="key-point">Электростатическая индукция — перераспределение свободных зарядов в проводнике под действием внешнего поля (заряды не исчезают)</div>
+        <div class="key-point">Поляризация диэлектрика — смещение связанных зарядов: диполи ориентируются вдоль поля, возникает поверхностный заряд</div>
+        <div class="example-block"><h4>Пример — напряжённость и сила</h4><p>E = 1000 В/м, q = 2·10⁻⁶ Кл.<br>F = qE = 2·10⁻⁶·1000 = <strong>2·10⁻³ Н = 2 мН</strong></p></div>
+        <div class="example-block"><h4>Пример — потенциал точечного заряда</h4><p>Q = 4·10⁻⁸ Кл, r = 0.2 м.<br>φ = 9·10⁹·4·10⁻⁸/0.2 = <strong>1800 В</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.2Б — Постоянный ток</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.4.2</span>
+        <span class="topic-name">ЭДС. Закон Ома для полной цепи. Внутреннее сопротивление.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">ε = A_стор / q<span>ЭДС источника (В)</span></div>
+          <div class="mini-formula">I = ε / (R + r)<span>Закон Ома для полной цепи</span></div>
+          <div class="mini-formula">U = ε − I·r<span>Напряжение на внешней цепи</span></div>
+          <div class="mini-formula">U = I·R<span>Закон Ома для участка цепи</span></div>
+          <div class="mini-formula">I_кз = ε / r<span>Ток короткого замыкания (R→0)</span></div>
+          <div class="mini-formula">U_r = I·r<span>Падение напряжения на r_внутр.</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">U(I) — нагрузочная характеристика</div>
+            <svg viewBox="0 0 190 130" width="100%">
+              <line x1="20" y1="112" x2="180" y2="112" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="112" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="183" y="115" font-size="10" fill="#888">I</text>
+              <text x="8" y="8" font-size="10" fill="#888">U</text>
+              <line x1="20" y1="22" x2="162" y2="106" stroke="#378ADD" stroke-width="2.5"/>
+              <line x1="20" y1="22" x2="20" y2="112" stroke="#D85A30" stroke-width="1.2" stroke-dasharray="4,3"/>
+              <text x="23" y="20" font-size="12" fill="#D85A30">ε</text>
+              <line x1="162" y1="106" x2="162" y2="112" stroke="#1D9E75" stroke-width="1.2" stroke-dasharray="3,2"/>
+              <text x="155" y="122" font-size="10" fill="#1D9E75">I_кз</text>
+              <text x="60" y="80" font-size="11" fill="#378ADD">U = ε − Ir</text>
+              <text x="55" y="95" font-size="10" fill="#888">tg α = r</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="key-point" style="margin-top:14px"><strong>ЭДС</strong> — работа сторонних сил (химических, механических) по перемещению единичного положительного заряда внутри источника.</div>
+            <div class="key-point" style="margin-top:10px">Различие ЭДС и напряжения: ε = U + U_r = U + Ir. При R→∞ (разомкнутая цепь): U = ε</div>
+            <div class="key-point" style="margin-top:10px">При большом внутреннем сопротивлении: ↑I → ↑U_r → ↓U на нагрузке</div>
+          </div>
+        </div>
+        <div class="example-block"><h4>Пример</h4><p>ε=12 В, r=1 Ом, R=5 Ом.<br>I = 12/(5+1) = <strong>2 А</strong> &nbsp;|&nbsp; U = 12−2·1 = <strong>10 В</strong> &nbsp;|&nbsp; U_r = 2·1 = <strong>2 В</strong></p></div>
+        <div class="example-block"><h4>Пример — нахождение r из графика</h4><p>По графику U(I): пересечение с осью U → ε; наклон прямой → r = Δ(ε−U)/ΔI</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.3А — Электрические цепи</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.4.2</span>
+        <span class="topic-name">Правила Кирхгофа. Потенциометр. Мощность и КПД цепи.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">ΣI = 0 (узел)<span>I правило Кирхгофа: сумма токов в узле = 0</span></div>
+          <div class="mini-formula">ΣIR = Σε (контур)<span>II правило Кирхгофа: сумма ЭДС = сумма падений</span></div>
+          <div class="mini-formula">P_полн = ε·I<span>Полная мощность источника</span></div>
+          <div class="mini-formula">P_пол = I²R = U²/R<span>Полезная (внешняя) мощность</span></div>
+          <div class="mini-formula">P_пот = I²r<span>Мощность потерь (тепло в r)</span></div>
+          <div class="mini-formula">η = R/(R+r) · 100%<span>КПД цепи</span></div>
+          <div class="mini-formula">U_вых = U·R₂/(R₁+R₂)<span>Потенциометр (делитель U)</span></div>
+        </div>
+        <div class="key-point">I правило: ΣI_вт = ΣI_вых в любом узле (закон сохранения заряда)</div>
+        <div class="key-point">II правило: выбрать контур, обойти по часовой, ЭДС и IR со знаком «+» если совпадают с выбранным направлением обхода</div>
+        <div class="key-point">КПД максимален при R >> r; при R = r — максимальная передаваемая мощность (η=50%)</div>
+        <div class="example-block"><h4>Пример — КПД</h4><p>ε=12 В, r=2 Ом, R=8 Ом.<br>I = 12/10 = 1.2 А; P_полн = 12·1.2 = 14.4 Вт<br>η = 8/(8+2) = <strong>80%</strong></p></div>
+        <div class="example-block"><h4>Пример — правила Кирхгофа (2 петли)</h4><p>Узел A: I₁ = I₂ + I₃<br>Контур 1: ε₁ = I₁R₁ + I₂R₂<br>Контур 2: −ε₂ = −I₂R₂ + I₃R₃ (или ε₁−ε₂ = I₁R₁+I₃R₃)<br>→ Решить систему уравнений</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.3Б — Ток в различных средах</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.4.2</span>
+        <span class="topic-name">ВАХ разных проводников. Термисторы. Фоторезисторы. Термопара.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Вольт-амперные характеристики (ВАХ)</div>
+            <svg viewBox="0 0 210 140" width="100%">
+              <line x1="20" y1="118" x2="200" y2="118" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="118" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="193" y="121" font-size="10" fill="#888">U</text>
+              <text x="8" y="8" font-size="10" fill="#888">I</text>
+              <line x1="20" y1="118" x2="185" y2="25" stroke="#378ADD" stroke-width="2.5"/>
+              <text x="138" y="38" font-size="10" fill="#378ADD">металл (линейная)</text>
+              <path d="M20,118 C60,116 100,108 145,65 S175,25 190,18" stroke="#1D9E75" stroke-width="2.5" fill="none"/>
+              <text x="160" y="15" font-size="10" fill="#1D9E75">диод</text>
+              <path d="M20,118 C55,116 85,110 115,96 S158,74 185,60" stroke="#D85A30" stroke-width="2.5" fill="none"/>
+              <text x="165" y="56" font-size="10" fill="#D85A30">лампа (нелин.)</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="table-wrap"><table>
+              <tr><th>Среда</th><th>Носители заряда</th></tr>
+              <tr><td>Металлы</td><td>Свободные электроны</td></tr>
+              <tr><td>Электролиты</td><td>Ионы (катионы + анионы)</td></tr>
+              <tr><td>Газы</td><td>Ионы и электроны (ионизация)</td></tr>
+              <tr><td>Полупровод.</td><td>Электроны и «дырки»</td></tr>
+              <tr><td>Вакуум</td><td>Электроны (термоэмиссия)</td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="key-point">Термистор (NTC): R уменьшается при нагреве — полупроводник, применяется в термодатчиках, регуляторах температуры</div>
+        <div class="key-point">Фоторезистор (LDR): R уменьшается при освещении — применяется в датчиках освещённости, автоматическом освещении</div>
+        <div class="key-point">Термопара (эффект Зеебека): при разности температур двух спаев разных металлов возникает ЭДС — применяется для измерения температуры</div>
+        <div class="key-point">ВАХ металла — линейная (R=const); лампы — нелинейная (R растёт с T); диода — нелинейная с порогом ~0.7 В</div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.3В — Радиоактивность</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.6.1</span>
+        <span class="topic-name">α, β, γ-излучения. Методы регистрации. Закон радиоактивного распада.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="table-wrap"><table>
+          <tr><th>Излучение</th><th>Природа</th><th>Заряд</th><th>Масса (а.е.м.)</th><th>Проникновение</th><th>Отклонение в поле</th></tr>
+          <tr><td>α (альфа)</td><td>ядро ⁴₂He</td><td>+2e</td><td>4</td><td>Лист бумаги / кожа</td><td>Сильное</td></tr>
+          <tr><td>β⁻ (бета)</td><td>электрон</td><td>−e</td><td>~0</td><td>Алюминий 5–10 мм</td><td>Среднее</td></tr>
+          <tr><td>γ (гамма)</td><td>фотоны</td><td>0</td><td>0</td><td>Свинец / бетон</td><td>Нет</td></tr>
+        </table></div>
+        <div class="formula-grid">
+          <div class="mini-formula">N = N₀ · (½)^(t/T½)<span>Закон радиоактивного распада</span></div>
+          <div class="mini-formula">N = N₀ · e^(−λt)<span>Через константу распада λ</span></div>
+          <div class="mini-formula">λ = ln2 / T½ ≈ 0.693 / T½<span>Константа распада</span></div>
+          <div class="mini-formula">A = λN<span>Активность (Бк = распад/с)</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">N(t) — экспоненциальный распад</div>
+            <svg viewBox="0 0 190 130" width="100%">
+              <line x1="20" y1="112" x2="180" y2="112" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="112" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="183" y="115" font-size="10" fill="#888">t</text>
+              <text x="8" y="8" font-size="10" fill="#888">N</text>
+              <path d="M20,15 C35,17 55,30 85,58 S128,88 178,108" stroke="#D85A30" stroke-width="2.5" fill="none"/>
+              <text x="22" y="13" font-size="11" fill="#D85A30">N₀</text>
+              <line x1="20" y1="63" x2="85" y2="63" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="85" y1="63" x2="85" y2="112" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+              <text x="22" y="61" font-size="10" fill="#888">N₀/2</text>
+              <text x="78" y="122" font-size="10" fill="#888">T½</text>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="section-label">Методы регистрации</div>
+            <div class="key-point">Счётчик Гейгера-Мюллера — ионизация газа, электрический импульс</div>
+            <div class="key-point">Камера Вильсона — следы в пересыщенном паре</div>
+            <div class="key-point">Пузырьковая камера — следы пузырьков в жидком водороде</div>
+            <div class="key-point">Фотопластинка — засветка эмульсии</div>
+          </div>
+        </div>
+        <div class="key-point">Радиоактивный распад — спонтанный, не зависит от температуры, давления, химического состояния</div>
+        <div class="key-point">Применения: радиоуглеродное датирование (C-14, T½=5730 лет), ядерная медицина, стерилизация, пожарные датчики (Am-241)</div>
+        <div class="example-block"><h4>Пример — датирование C-14</h4><p>T½=5730 лет. Прошло 11460 лет = 2·T½.<br>N = N₀·(½)² = N₀/4 → осталось <strong>25%</strong> от исходного</p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.4А — Физика атома и ядра</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.6.2</span>
+        <span class="topic-name">Строение ядра. Правила смещения. Дефект масс и энергия связи. Деление. Синтез.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="section-label">Состав ядра и нуклиды</div>
+        <div class="formula-grid">
+          <div class="mini-formula">ᴬZX: Z — протонов, A−Z — нейтронов<span>Запись нуклида (нуклон = протон или нейтрон)</span></div>
+          <div class="mini-formula">Опыт Резерфорда<span>α-частицы рассеиваются → ядро мало и тяжело</span></div>
+        </div>
+        <div class="section-label">Правила смещения</div>
+        <div class="table-wrap"><table>
+          <tr><th>Тип распада</th><th>Изменение Z</th><th>Изменение A</th><th>Пример реакции</th></tr>
+          <tr><td>α-распад</td><td>Z → Z−2</td><td>A → A−4</td><td>²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He</td></tr>
+          <tr><td>β⁻-распад</td><td>Z → Z+1</td><td>A → A</td><td>¹⁴₆C → ¹⁴₇N + e⁻ + ν̄ₑ</td></tr>
+          <tr><td>β⁺-распад</td><td>Z → Z−1</td><td>A → A</td><td>¹¹₆C → ¹¹₅B + e⁺ + νₑ</td></tr>
+          <tr><td>γ-излучение</td><td>Z не меняется</td><td>A не меняется</td><td>Переход ядра из возб. в осн. состояние</td></tr>
+        </table></div>
+        <div class="section-label">Дефект масс и энергия связи</div>
+        <div class="formula-grid">
+          <div class="mini-formula">Δm = Zm_p + Nm_n − M_ядра<span>Дефект масс (кг или а.е.м.)</span></div>
+          <div class="mini-formula">E_св = Δm · c²<span>Энергия связи (Дж); c=3·10⁸ м/с</span></div>
+          <div class="mini-formula">1 а.е.м. = 931.5 МэВ<span>Удобный перевод для расчётов</span></div>
+          <div class="mini-formula">ΔE = Δm · 931.5 МэВ<span>Если Δm в а.е.м.</span></div>
+        </div>
+        <div class="section-label">Деление ядра и ядерный реактор</div>
+        <div class="key-point">Деление U-235: ¹n + ²³⁵U → осколки + 2–3 нейтрона + E. Цепная реакция при k ≥ 1 (критическая масса)</div>
+        <div class="key-point">Ядерный реактор: активная зона (U-235/Pu-239) + замедлитель (вода/графит) + регулирующие стержни (бор/кадмий) + теплоноситель + биозащита</div>
+        <div class="key-point">Термоядерный синтез: ²₁H + ³₁H → ⁴₂He + ¹₀n + 17.6 МэВ — источник энергии звёзд (требует T > 10⁸ К)</div>
+        <div class="key-point">Применения радиоактивности: ПЭТ-сканирование, лучевая терапия рака, стерилизация продуктов, радиоуглеродное датирование</div>
+        <div class="example-block"><h4>Пример — энергия связи ⁴He</h4><p>m_p=1.00728 а.е.м., m_n=1.00867 а.е.м., M_He=4.00260 а.е.м.<br>Δm = (2·1.00728 + 2·1.00867) − 4.00260 = 0.03030 а.е.м.<br>E_св = 0.03030 · 931.5 ≈ <strong>28.3 МэВ</strong></p></div>
+        <div class="example-block"><h4>Пример — правила смещения</h4><p>²²⁶₈₈Ra → ? + ⁴₂He (α-распад)<br>Z: 88−2=86; A: 226−4=222 → продукт: <strong>²²²₈₆Rn</strong></p></div>
+      </div>
+    </div>
+
+    <div class="section-title">Раздел 10.4Б — Космология</div>
+
+    <div class="topic-card">
+      <div class="topic-header" onclick="toggle(this)">
+        <span class="topic-num">10.7.2</span>
+        <span class="topic-name">Галактики. Цефеиды. Закон Хаббла. Большой взрыв.</span>
+        <span class="topic-arrow">▼</span>
+      </div>
+      <div class="topic-body">
+        <div class="formula-grid">
+          <div class="mini-formula">v = H₀ · d<span>Закон Хаббла (км/с)</span></div>
+          <div class="mini-formula">H₀ ≈ 70 км/с/Мпк<span>Постоянная Хаббла</span></div>
+          <div class="mini-formula">T_вс ≈ 1/H₀ ≈ 13.8 млрд лет<span>Возраст Вселенной</span></div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-wrap">
+            <div class="graph-title">Закон Хаббла: v(d)</div>
+            <svg viewBox="0 0 190 130" width="100%">
+              <line x1="20" y1="112" x2="180" y2="112" stroke="#888" stroke-width="1.2"/>
+              <line x1="20" y1="112" x2="20" y2="10" stroke="#888" stroke-width="1.2"/>
+              <text x="183" y="115" font-size="10" fill="#888">d (Мпк)</text>
+              <text x="8" y="8" font-size="10" fill="#888">v</text>
+              <line x1="20" y1="112" x2="170" y2="20" stroke="#378ADD" stroke-width="2.5"/>
+              <text x="110" y="50" font-size="10" fill="#378ADD">v = H₀·d</text>
+              <circle cx="50" cy="95" r="3.5" fill="#D85A30"/>
+              <circle cx="85" cy="75" r="3.5" fill="#D85A30"/>
+              <circle cx="120" cy="55" r="3.5" fill="#D85A30"/>
+              <circle cx="150" cy="38" r="3.5" fill="#D85A30"/>
+            </svg>
+          </div>
+          <div class="graph-wrap">
+            <div class="key-point" style="margin-top:12px">Цефеиды — переменные звёзды с известной зависимостью P–L (период–светимость). Хаббл использовал их для измерения расстояний до галактик.</div>
+            <div class="key-point" style="margin-top:8px">Красное смещение: λ_набл > λ_ист → галактики удаляются (доплеровский сдвиг). Чем дальше галактика — тем быстрее удаляется.</div>
+            <div class="key-point" style="margin-top:8px">Большой взрыв: ~13.8 млрд лет назад → расширение из сингулярности, реликтовое излучение (2.7 К) как доказательство.</div>
+          </div>
+        </div>
+        <div class="key-point">Млечный Путь — спиральная галактика, ∅ ≈ 100 000 св. лет, ≈ 200–400 млрд звёзд, Солнце — на расстоянии ~26 000 св. лет от центра</div>
+        <div class="key-point">Доказательства Большого взрыва: расширение Вселенной (Хаббл), реликтовое излучение (ОМВ, 2.7 К), соотношение H:He = 3:1</div>
+        <div class="example-block"><h4>Пример — закон Хаббла</h4><p>Галактика удаляется v=14 000 км/с, H₀=70 км/с/Мпк.<br>d = v/H₀ = 14000/70 = <strong>200 Мпк</strong></p></div>
+        <div class="example-block"><h4>Пример — красное смещение</h4><p>Если z = Δλ/λ₀ = 0.05, то v = z·c = 0.05·300000 ≈ <strong>15000 км/с</strong></p></div>
+      </div>
+    </div>
+
+  </div><!-- /g10 -->
+
+</div><!-- /.page -->
+
+<script>
+function showGrade(g, btn) {
+  document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('g9').style.display = g === 9 ? '' : 'none';
+  document.getElementById('g10').style.display = g === 10 ? '' : 'none';
+}
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.topic-arrow');
+  const isOpen = body.classList.toggle('open');
+  arrow.classList.toggle('open', isOpen);
+}
+</script>
+</body>
+</html>
